@@ -1,11 +1,13 @@
 package com.example.android.cryptocurrencyapp.domain.repository
 
-import com.example.android.cryptocurrencyapp.data.remote.dto.CoinDetailDto
-import com.example.android.cryptocurrencyapp.data.remote.dto.CoinDto
+import com.example.android.cryptocurrencyapp.common.Resource
+import com.example.android.cryptocurrencyapp.domain.model.Coin
+import com.example.android.cryptocurrencyapp.domain.model.CoinDetail
+import kotlinx.coroutines.flow.Flow
 
 interface CoinRepository {
 
-    suspend fun getCoins(): List<CoinDto>
+    suspend fun getCoins(): Flow<Resource<List<Coin>>>
 
-    suspend fun getCoinById(coinId: String): CoinDetailDto
+    suspend fun getCoinById(coinId: String): Flow<Resource<CoinDetail>>
 }
