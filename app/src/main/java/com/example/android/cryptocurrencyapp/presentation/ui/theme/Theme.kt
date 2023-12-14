@@ -1,6 +1,5 @@
 package com.example.android.cryptocurrencyapp.presentation.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -22,7 +21,7 @@ private val LightColorPalette = lightColorScheme(
 )
 
 @Composable
-fun CryptocurrencyAppYTTheme(
+fun CryptocurrencyAppTheme(
     darkTheme: Boolean = true,
     content: @Composable() () -> Unit
 ) {
