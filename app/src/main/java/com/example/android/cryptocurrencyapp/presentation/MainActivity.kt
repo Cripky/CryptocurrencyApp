@@ -19,15 +19,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CryptocurrencyAppTheme {
-                Surface(
-                    color = MaterialTheme.colorScheme.background
-                ) {
+                Surface(color = MaterialTheme.colorScheme.background) {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
                         startDestination = Screen.CoinListScreen.route
                     ) {
-                        composable(route = Screen.CoinListScreen.route) {
+                        composable(
+                            route = Screen.CoinListScreen.route
+                        ) {
                             CoinListScreen(navController)
                         }
                         composable(
