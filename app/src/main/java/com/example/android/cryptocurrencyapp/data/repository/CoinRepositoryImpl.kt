@@ -19,25 +19,25 @@ class CoinRepositoryImpl @Inject constructor(
 
     override suspend fun getCoins(): Flow<Resource<List<Coin>>> = flow {
         try {
-            emit(Resource.Loading<List<Coin>>())
+            emit(Resource.Loading())
             val coins = api.getCoins().map { it.toCoin() }
-            emit(Resource.Success<List<Coin>>(coins))
+            emit(Resource.Success(coins))
         } catch (e: HttpException) {
-            emit(Resource.Error<List<Coin>>(e.localizedMessage ?: "An unexpected error occurred."))
+            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred."))
         } catch (e: IOException) {
-            emit(Resource.Error<List<Coin>>("Couldn't reach server. Check your internet connection."))
+            emit(Resource.Error("Couldn't reach server. Check your internet connection."))
         }
     }
 
     override suspend fun getCoinById(coinId: String): Flow<Resource<CoinDetail>> = flow {
         try {
-            emit(Resource.Loading<CoinDetail>())
+            emit(Resource.Loading())
             val coin = api.getCoinById(coinId).toCoinDetail()
-            emit(Resource.Success<CoinDetail>(coin))
+            emit(Resource.Success(coin))
         } catch (e: HttpException) {
-            emit(Resource.Error<CoinDetail>(e.localizedMessage ?: "An unexpected error occured."))
+            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occured."))
         } catch (e: IOException) {
-            emit(Resource.Error<CoinDetail>("Couldn't reach server. Check your internet connection."))
+            emit(Resource.Error("Couldn't reach server. Check your internet connection."))
         }
     }
 }

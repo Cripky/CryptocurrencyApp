@@ -9,6 +9,7 @@ import com.example.android.cryptocurrencyapp.common.Constants
 import com.example.android.cryptocurrencyapp.common.Resource
 import com.example.android.cryptocurrencyapp.domain.use_case.get_coin.GetCoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -46,7 +47,7 @@ class CoinDetailViewModel @Inject constructor(
                         _state.value = CoinDetailState(isLoading = true)
                     }
                 }
-            }
+            }.collect()
         }
     }
 }
